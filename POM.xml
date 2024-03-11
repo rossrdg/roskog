@@ -3,7 +3,6 @@
   <groupId>com.mycompany.app</groupId>
   <artifactId>my-app</artifactId>
   <version>1</version>
-  <packaging>war</packaging>
   <plugin>
     <artifactId>maven-war-plugin</artifactId>
     <version>2.6</version>
