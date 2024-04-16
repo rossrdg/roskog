@@ -1,17 +1,64 @@
 #!/bin/bash
+# declare folder with all types of files for the script
 folder_path="/home/root/scripts/organiser"
 while read -r line; do
 	case "$line" in
-	*.jpeg)
+	*.jpeg | *.png | *.jpg)
      		if [ -d "$folder_path"/images ]; then
 			 mv "$folder_path"/"$line" "$folder_path"/images/
 		else
 			 mkdir "$folder_path"/images
 			 mv "$folder_path"/"$line" "$folder_path"/images/
-		fi
-			 echo "Image Files moved to $folder_path/images"
-		;;
-	\?) echo "nothing else" ;;
+		fi ;;
+	*.doc | *.docx | *.txt | *.pdf) 
+	        if [ -d "$folder_path"/documents ]; then
+			 mv "$folder_path"/"$line" "$folder_path"/Documents/
+		else
+			 mkdir "$folder_path"/Documents
+			 mv "$folder_path"/"$line" "$folder_path"/Documents/
+		fi ;;
+	*.xls | *.xlsx | *.csv)
+	        if [ -d "$folder_path"/spreadsheets ]; then
+			 mv "$folder_path"/"$line" "$folder_path"/spreadsheets/
+		else
+			 mkdir "$folder_path"/spreadsheets
+			 mv "$folder_path"/"$line" "$folder_path"/spreadsheets/
+		fi ;;
+	*.sh) 
+	        if [ -d "$folder_path"/scripts ]; then
+			 mv "$folder_path"/"$line" "$folder_path"/scripts/
+		else
+			 mkdir "$folder_path"/scripts
+			 mv "$folder_path"/"$line" "$folder_path"/scripts/
+		fi ;;
+	*.zip | *.tar | *.tar.gz | *.tar.bz2)
+	        if [ -d "$folder_path"/archives ]; then
+			 mv "$folder_path"/"$line" "$folder_path"/archives/
+		else
+			 mkdir "$folder_path"/archives
+			 mv "$folder_path"/"$line" "$folder_path"/archives/
+		fi ;;
+	*.ppt | *.pptx)
+	        if [ -d "$folder_path"/presentations ]; then
+			 mv "$folder_path"/"$line" "$folder_path"/presentations/
+		else
+			 mkdir "$folder_path"/presentations
+			 mv "$folder_path"/"$line" "$folder_path"/presentations/
+		fi ;;
+	*.mp3)
+	        if [ -d "$folder_path"/audio ]; then
+			 mv "$folder_path"/"$line" "$folder_path"/audio/
+		else
+			 mkdir "$folder_path"/audio
+			 mv "$folder_path"/"$line" "$folder_path"/audio/
+		fi ;;
+	*.mp4)
+	        if [ -d "$folder_path"/video ]; then
+			 mv "$folder_path"/"$line" "$folder_path"/video/
+		else
+			 mkdir "$folder_path"/video
+			 mv "$folder_path"/"$line" "$folder_path"/video/
+		fi ;;
+	*) echo "Left in $folder_path" ;;
 	esac
 done < <(ls "$folder_path")
-
