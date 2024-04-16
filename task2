@@ -12,10 +12,10 @@ while read -r line; do
 		fi ;;
 	*.doc | *.docx | *.txt | *.pdf) 
 	        if [ -d "$folder_path"/documents ]; then
-			 mv "$folder_path"/"$line" "$folder_path"/Documents/
+			 mv "$folder_path"/"$line" "$folder_path"/documents/
 		else
 			 mkdir "$folder_path"/Documents
-			 mv "$folder_path"/"$line" "$folder_path"/Documents/
+			 mv "$folder_path"/"$line" "$folder_path"/documents/
 		fi ;;
 	*.xls | *.xlsx | *.csv)
 	        if [ -d "$folder_path"/spreadsheets ]; then
