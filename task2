@@ -1,0 +1,17 @@
+#!/bin/bash
+folder_path="/home/root/scripts/organiser"
+while read -r line; do
+	case "$line" in
+	*.jpeg)
+     		if [ -d "$folder_path"/images ]; then
+			 mv "$folder_path"/"$line" "$folder_path"/images/
+		else
+			 mkdir "$folder_path"/images
+			 mv "$folder_path"/"$line" "$folder_path"/images/
+		fi
+			 echo "Image Files moved to $folder_path/images"
+		;;
+	\?) echo "nothing else" ;;
+	esac
+done < <(ls "$folder_path")
+
